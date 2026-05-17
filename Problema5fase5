@@ -1,0 +1,50 @@
+# Problema 5
+# Registro de horas trabajadas por un equipo
+
+# Función para calcular horas y clasificar jornada
+def calcular_horas(recurso):
+    nombre = recurso[0]
+    horas = recurso[1:]
+
+    total = sum(horas)
+
+    if total > 40:
+        clasificacion = "Sobretiempo"
+    else:
+        clasificacion = "Horario Estándar"
+
+    return total, clasificacion
+
+
+# Crear matriz vacía
+equipo = []
+
+# Ingreso de datos
+for i in range(4):
+    print(f"\nRegistro del recurso {i+1}")
+
+    nombre = input("Ingrese el nombre: ")
+
+    lunes = float(input("Horas trabajadas el lunes: "))
+    martes = float(input("Horas trabajadas el martes: "))
+    miercoles = float(input("Horas trabajadas el miércoles: "))
+    jueves = float(input("Horas trabajadas el jueves: "))
+    viernes = float(input("Horas trabajadas el viernes: "))
+
+    # Guardar datos en la matriz
+    equipo.append([nombre, lunes, martes, miercoles, jueves, viernes])
+
+
+# Mostrar resultados
+print("\n===== REPORTE SEMANAL =====")
+
+for persona in equipo:
+    total, clasificacion = calcular_horas(persona)
+
+    print("\nNombre:", persona[0])
+    print("Total de horas:", total)
+
+    if clasificacion == "Sobretiempo":
+        print("Clasificación: Sobretiempo")
+    else:
+        print("Clasificación: Horario Estándar")
